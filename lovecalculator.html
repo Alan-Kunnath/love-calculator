@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Love Calculator</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #ffcccb;
+            color: #333;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 50px auto;
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+        h1 {
+            color: #ff6f61;
+        }
+        input {
+            width: calc(100% - 20px);
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 16px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #ff6f61;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #e65550;
+        }
+        .result {
+            margin-top: 20px;
+            font-size: 20px;
+        }
+        .share {
+            margin-top: 20px;
+            color: #333;
+            text-decoration: underline;
+            cursor: pointer;
+        }
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Love Calculator</h1>
+        <p>Enter your name and your partner's name to calculate your love percentage!</p>
+        <input type="text" id="yourName" placeholder="Your Name">
+        <input type="text" id="partnerName" placeholder="Partner's Name">
+        <button onclick="calculateLove()">Calculate</button>
+        <div class="result" id="result"></div>
+        <p class="share" onclick="sharePrank()">Share this with your friends!</p>
+    </div>
+
+    <script>
+        let secretDashboard = [];
+        
+        function calculateLove() {
+            const yourName = document.getElementById("yourName").value.trim();
+            const partnerName = document.getElementById("partnerName").value.trim();
+
+            if (!yourName || !partnerName) {
+                alert("Please fill in both names!");
+                return;
+            }
+
+            // Fake percentage generation
+            const percentage = Math.floor(Math.random() * (100 - 50 + 1)) + 50;
+
+            // Add to secret dashboard
+            secretDashboard.push({ yourName, partnerName, percentage });
+
+            // Display the result to the user
+            document.getElementById("result").innerHTML = `Your love percentage is: <strong>${percentage}%</strong>`;
+
+            // Prank message sent to you (replace YOUR_EMAIL with your own)
+            console.log(secretDashboard); // Replace this with a server-side dashboard if needed
+        }
+
+        function sharePrank() {
+            const shareText = "Try this Love Calculator! Enter your name and your crush's name and see the magic! Link: https://your-site-link.github.io";
+            navigator.clipboard.writeText(shareText);
+            alert("Link copied! Share it on WhatsApp or Instagram.");
+        }
+    </script>
+</body>
+</html>
